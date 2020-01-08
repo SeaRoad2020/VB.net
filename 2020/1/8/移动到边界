@@ -1,0 +1,27 @@
+'移动到边界后弹出MsgBox
+Public Class Form1
+    Private Sub Label2_Click(sender As Object, e As EventArgs) Handles Label2.Click
+        Label1.Left = Label1.Left - 100 '左移
+        Label4.Enabled = True
+
+        If Label1.Left + Label5.Width < 0 Then
+            Label2.Enabled = False
+            MsgBox("左移不可操作")
+        End If
+    End Sub
+
+    Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+
+    End Sub
+
+    Private Sub Label4_Click(sender As Object, e As EventArgs) Handles Label4.Click
+        Label1.Left = Label1.Left + 50 '右移
+        Label2.Enabled = True
+        Dim W As Long
+        W = Me.Width
+        If Label1.Left > W Then
+            Label4.Enabled = False
+            MsgBox("右移不可操作")
+        End If
+    End Sub
+End Class
